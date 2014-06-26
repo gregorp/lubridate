@@ -12,7 +12,7 @@ NULL
 #' @S3method minute Period
 #' @param x a date-time object   
 #' @keywords utilities manip chron methods
-#' @return the minutes element of x as a decimal number
+#' @return the minutes element of x as an integer
 #' @examples
 #' x <- ymd("2012-03-26")
 #' minute(x)
@@ -23,7 +23,7 @@ minute <- function(x)
   UseMethod("minute")
   
 minute.default <- function(x)
-  as.POSIXlt(x, tz = tz(x))$min
+  as.integer(as.POSIXlt(x, tz = tz(x))$min)
 
 minute.Period <- function(x)
   slot(x, "minute")
