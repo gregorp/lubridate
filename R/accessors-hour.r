@@ -12,7 +12,7 @@ NULL
 #' @S3method hour Period
 #' @param x a date-time object   
 #' @keywords utilities manip chron methods
-#' @return the hours element of x as a decimal number
+#' @return the hours element of x as an integer
 #' @examples
 #' x <- ymd("2012-03-26")
 #' hour(x)
@@ -23,7 +23,7 @@ hour <- function(x)
   UseMethod("hour")
   
 hour.default <- function(x)
-    as.POSIXlt(x, tz = tz(x))$hour
+    as.integer(as.POSIXlt(x, tz = tz(x))$hour)
 
 hour.Period <- function(x)
   slot(x, "hour")
