@@ -13,11 +13,11 @@ NULL
 #' @S3method month Period
 #' @param x a date-time object  
 #' @param label logical. TRUE will display the month as a character string
-#'   such as "January." FALSE will display the month as a number.
+#'   such as "January." FALSE will display the month as an integer.
 #' @param abbr logical. FALSE will display the month as a character string #'
 #'   label, such as #' "January". TRUE will display an abbreviated version of
 #'   the label, such as "Jan". abbr is #' disregarded if label = FALSE.
-#' @return the months element of x as a number (1-12) or character string. 1 = January.
+#' @return the months element of x as an integer (1-12) or character string. 1 = January.
 #' @keywords utilities manip chron methods
 #' @examples
 #' x <- ymd("2012-03-26")
@@ -38,7 +38,7 @@ month <- function(x, label = FALSE, abbr = TRUE)
   UseMethod("month")
   
 month.default <- function(x, label = FALSE, abbr = TRUE)
-  month(as.POSIXlt(x, tz = tz(x))$mon + 1, label, abbr)
+  month(as.integer(as.POSIXlt(x, tz = tz(x))$mon) + 1L, label, abbr)
   
 month.numeric <- function(x, label = FALSE, abbr = TRUE) {
   if (!label) return(x)
