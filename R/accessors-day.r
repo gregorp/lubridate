@@ -13,8 +13,8 @@ NULL
 #' @S3method mday Period
 #' @param x a POSIXct, POSIXlt, Date, Period, chron, yearmon, yearqtr, zoo, zooreg,
 #'    timeDate, xts, its, ti, jul, timeSeries, or fts object. 
-#' @return yday returns the day of the year as a decimal number (01-366). mday returns the day of 
-#'   the month as a decimal number (01-31). 
+#' @return yday returns the day of the year as an integer (01-366). mday returns the day of 
+#'   the month as an integer (01-31). 
 #' @seealso \code{\link{wday}}
 #' @keywords utilities manip chron methods
 #' @examples
@@ -28,7 +28,7 @@ yday <- function(x)
   UseMethod("yday")
   
 yday.default <- function(x)
-  as.POSIXlt(x, tz = tz(x))$yday + 1
+  as.integer(as.POSIXlt(x, tz = tz(x))$yday) + 1L
 
 
 
@@ -68,7 +68,7 @@ wday <- function(x, label = FALSE, abbr = TRUE)
   UseMethod("wday")
 
 wday.default <- function(x, label = FALSE, abbr = TRUE){
-  wday(as.POSIXlt(x, tz = tz(x))$wday + 1, label, abbr)
+  wday(as.integer(as.POSIXlt(x, tz = tz(x))$wday) + 1L, label, abbr)
 }
 
 wday.numeric <- function(x, label = FALSE, abbr = TRUE) {
@@ -88,7 +88,7 @@ mday <- day <- function(x)
   UseMethod("mday")
   
 mday.default <- function(x)
-  as.POSIXlt(x, tz = tz(x))$mday
+  as.integer(as.POSIXlt(x, tz = tz(x))$mday)
 
 mday.Period <- function(x)
   slot(x, "day")
