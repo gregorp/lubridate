@@ -13,7 +13,7 @@ NULL
 #' @S3method year default
 #' @S3method year Period
 #' @param x a date-time object   
-#' @return the years element of x as a decimal number
+#' @return the years element of x as an integer
 #' @keywords utilities manip chron methods
 #' @examples
 #' x <- ymd("2012-03-26")
@@ -24,7 +24,7 @@ year <- function(x)
   UseMethod("year")
   
 year.default <- function(x)
-    as.POSIXlt(x, tz = tz(x))$year + 1900
+    as.integer(as.POSIXlt(x, tz = tz(x))$year) + 1900
 
 year.Period <- function(x)
   slot(x, "year")
