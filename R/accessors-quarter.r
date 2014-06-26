@@ -23,18 +23,18 @@ NULL
 #' @export
 quarter <- function(x, with_year = FALSE) {
   m <- month(x)
-  quarters <- c("1" = 1, 
-                "2" = 1, 
-                "3" = 1, 
-                "4" = 2, 
-                "5" = 2, 
-                "6" = 2, 
-                "7" = 3, 
-                "8" = 3, 
-                "9" = 3, 
-                "10" = 4, 
-                "11" = 4, 
-                "12" = 4)
+  quarters <- c("1" = 1L, 
+                "2" = 1L, 
+                "3" = 1L, 
+                "4" = 2L, 
+                "5" = 2L, 
+                "6" = 2L, 
+                "7" = 3L, 
+                "8" = 3L, 
+                "9" = 3L, 
+                "10" = 4L, 
+                "11" = 4L, 
+                "12" = 4L)
   if (isTRUE(with_year)){
     q <- unname(quarters[m])
     y <- year(x)
